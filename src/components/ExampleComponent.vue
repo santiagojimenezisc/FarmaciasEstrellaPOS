@@ -1,37 +1,24 @@
 <template>
-  <div>
-    <p>{{ title }}</p>
-    <ul>
-      <li v-for="todo in todos" :key="todo.id" @click="increment">
-        {{ todo.id }} - {{ todo.content }}
-      </li>
-    </ul>
-    <p>Count: {{ todoCount }} / {{ meta.totalCount }}</p>
-    <p>Active: {{ active ? 'yes' : 'no' }}</p>
-    <p>Clicks on todos: {{ clickCount }}</p>
+  <div class="row w-100 q-pa-lg">
+    <div class="col-12">
+      <h6 class="">Dashboard</h6>
+    </div>
+    <div class="col-12 col-md-4 q-gutter-xs">
+      <h5>Izquierda</h5>
+    </div>
+    <div class="col-12 col-md-8 q-gutter-lg">
+      <h5>Derecha</h5>
+    </div>
   </div>
 </template>
-
 <script setup lang="ts">
-import { computed, ref } from 'vue';
-import type { Todo, Meta } from './models';
-
-interface Props {
-  title: string;
-  todos?: Todo[];
-  meta: Meta;
-  active: boolean;
-};
-
-const props = withDefaults(defineProps<Props>(), {
-  todos: () => []
-});
-
-const clickCount = ref(0);
-function increment() {
-  clickCount.value += 1;
-  return clickCount.value;
-}
-
-const todoCount = computed(() => props.todos.length);
+//import { computed, onMounted, ref } from 'vue'
+//import axios from 'axios'
+//import dayjs from '../boot/days'
 </script>
+<style scoped>
+p {
+  margin-bottom: 0;
+  margin-left: 1rem;
+}
+</style>

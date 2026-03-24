@@ -1,0 +1,323 @@
+export interface Root {
+  results: Result[]
+  paging: Paging
+}
+
+export interface Result {
+  accounts_info?: AccountsInfo
+  acquirer_reconciliation: any[]
+  additional_info: AdditionalInfo
+  authorization_code?: string
+  binary_mode: boolean
+  brand_id: any
+  build_version: string
+  call_for_authorize_id: any
+  callback_url: any
+  captured: boolean
+  card: Card
+  charges_details: ChargesDetail[]
+  charges_execution_info: ChargesExecutionInfo
+  collector_id?: number
+  corporation_id: any
+  counter_currency: any
+  coupon_amount: number
+  currency_id: string
+  date_approved: string
+  date_created: string
+  date_last_updated: string
+  date_of_expiration: any
+  deduction_schema?: string
+  description: string
+  differential_pricing_id: any
+  external_reference?: string
+  fee_details: FeeDetail[]
+  financing_group?: string
+  id: number
+  installments: number
+  integrator_id: any
+  issuer_id: string
+  live_mode: boolean
+  marketplace_owner: any
+  merchant_account_id: any
+  merchant_number: any
+  metadata: Metadata2
+  money_release_date: string
+  money_release_schema: any
+  money_release_status: string
+  notification_url: any
+  operation_type: string
+  order: Order
+  payer?: Payer
+  payment_method: PaymentMethod
+  payment_method_id: string
+  payment_type_id: string
+  platform_id: any
+  point_of_interaction: PointOfInteraction
+  pos_id: any
+  processing_mode: string
+  refunds: any[]
+  release_info: any
+  shipping_amount: number
+  sponsor_id?: number
+  statement_descriptor: any
+  status: string
+  status_detail: string
+  store_id: any
+  tags: any
+  taxes_amount: number
+  transaction_amount: number
+  transaction_amount_refunded: number
+  transaction_details: TransactionDetails
+  shipping_cost: number
+  collector?: Collector2
+  payer_id?: number
+}
+
+export interface AccountsInfo {
+  sub_type: string
+  tags: any[]
+  type: string
+}
+
+export interface AdditionalInfo {
+  tracking_id: string
+  poi_id?: string
+  ip_address?: string
+  items?: Item[]
+}
+
+export interface Item {
+  category_id: string
+  id: string
+  quantity: string
+  title: string
+  unit_price: string
+}
+
+export interface Card {
+  bin?: string
+  cardholder?: Cardholder
+  country?: string
+  date_created?: string
+  date_last_updated?: string
+  expiration_month?: number
+  expiration_year?: number
+  first_six_digits?: string
+  id?: string
+  last_four_digits?: string
+  tags?: string[]
+}
+
+export interface Cardholder {
+  identification: Identification
+  name: string
+}
+
+export interface Identification {
+  number: any
+  type: any
+}
+
+export interface ChargesDetail {
+  accounts: Accounts
+  amounts: Amounts
+  client_id: number
+  date_created: string
+  id: string
+  last_updated: string
+  metadata: Metadata
+  name: string
+  refund_charges: any[]
+  reserve_id: any
+  type: string
+}
+
+export interface Accounts {
+  from: string
+  to: string
+}
+
+export interface Amounts {
+  original: number
+  refunded: number
+}
+
+export interface Metadata {
+  source: string
+  shipment_id?: number
+}
+
+export interface ChargesExecutionInfo {
+  internal_execution: InternalExecution
+}
+
+export interface InternalExecution {
+  date: string
+  execution_id: string
+}
+
+export interface FeeDetail {
+  amount: number
+  fee_payer: string
+  type: string
+}
+
+export interface Metadata2 {
+  is_fallback?: boolean
+  was_pin?: boolean
+  official_store_id?: number
+}
+
+export interface Order {
+  id?: string
+  type?: string
+}
+
+export interface Payer {
+  email?: string
+  entity_type: any
+  first_name: any
+  id: string
+  identification: Identification2
+  last_name: any
+  operator_id: any
+  phone: Phone
+  type: any
+}
+
+export interface Identification2 {
+  number?: string
+  type?: string
+}
+
+export interface Phone {
+  number: any
+  extension: any
+  area_code: any
+}
+
+export interface PaymentMethod {
+  id: string
+  issuer_id: string
+  type: string
+  data?: Data
+}
+
+export interface Data {
+  routing_data: RoutingData
+}
+
+export interface RoutingData {
+  merchant_account_id: string
+}
+
+export interface PointOfInteraction {
+  application_data?: ApplicationData
+  business_info?: BusinessInfo
+  location?: Location
+  transaction_data?: TransactionData
+  type: string
+  device?: Device
+}
+
+export interface ApplicationData {
+  name: any
+  version: any
+}
+
+export interface BusinessInfo {
+  branch?: string
+  sub_unit: string
+  unit: string
+}
+
+export interface Location {
+  source: string
+  state_id: string
+}
+
+export interface TransactionData {
+  cashback_id?: number
+  category?: string
+  reference_id?: string
+  reference_type?: string
+  tags?: any[]
+  e2e_id?: string
+  bank_info?: BankInfo
+  bank_transfer_id?: number
+  financial_institution?: number
+  infringement_notification?: InfringementNotification
+  qr_code: any
+  ticket_url: any
+  transaction_id?: string
+}
+
+export interface BankInfo {
+  collector: Collector
+  is_same_bank_account_owner: any
+  origin_bank_id: any
+  origin_wallet_id: any
+  payer: Payer2
+}
+
+export interface Collector {
+  account_holder_name: any
+  account_id: any
+  long_name: any
+  transfer_account_id: any
+}
+
+export interface Payer2 {
+  account_id: any
+  branch: any
+  external_account_id: any
+  id: any
+  identification: Identification3
+  long_name: any
+}
+
+export interface Identification3 {}
+
+export interface InfringementNotification {
+  status: any
+  type: any
+}
+
+export interface Device {
+  serial_number: string
+}
+
+export interface TransactionDetails {
+  acquirer_reference: any
+  bank_transfer_id?: number
+  external_resource_url: any
+  financial_institution?: string
+  installment_amount: number
+  net_received_amount: number
+  overpaid_amount: number
+  payable_deferral_period: any
+  payment_method_reference_id: any
+  total_paid_amount: number
+  transaction_id?: string
+}
+
+export interface Collector2 {
+  email: any
+  first_name: any
+  id: number
+  identification: Identification4
+  last_name: any
+  operator_id: any
+  phone: any
+}
+
+export interface Identification4 {
+  number: any
+  type: any
+}
+
+export interface Paging {
+  total: number
+  offset: number
+  limit: number
+}
